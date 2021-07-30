@@ -59,7 +59,7 @@
                 <div id="collapseSystem" class="collapse" aria-labelledby="headingSystem" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('countries.index') }}">País</a>
-                        <a class="collapse-item" href="cards.html">Estado</a>
+                        <a class="collapse-item" href="{{ route('states.index') }}">Estado</a>
                         <a class="collapse-item" href="cards.html">Departamento</a>
                         <a class="collapse-item" href="cards.html">Cidade</a>
                     </div>

@@ -10,4 +10,8 @@ class Pais extends Model
     use HasFactory;
 
     protected $fillable = ['codigo_pais', 'name'];
+                    //states
+    public function estados(){
+        return $this->hasMany(Estado::class);
+    }
 }
