@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StateStoreRequest;
-use App\Models\Pais;
+use App\Http\Requests\CityStoreRequest;
 use App\Models\Estado;
+use App\Models\Cidade;
 use Illuminate\Http\Request;
 
-
-class StateController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +16,12 @@ class StateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
-        $states = Estado::all();
+    {
+        $cities = Cidade::all();
         if($request->has('search')){
-            $states = Estado::where('name', 'like', "%{$request->search}%")->get();
+            $cities = Cidade::where('name', 'like', "%{$request->search}%")->get();
         }
-
-        return view('states.index', compact('states'));
+        return view('cities.index',compact('cities'));
     }
 
     /**
@@ -33,8 +31,9 @@ class StateController extends Controller
      */
     public function create()
     {
-        $countries = Pais::all();
-        return view('states.create', compact('countries'));
+       $states = Estado::all();
+
+       return view('cities.create', compact('states'));
     }
 
     /**
@@ -43,11 +42,11 @@ class StateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StateStoreRequest $request)
+    public function store(CityStoreRequest $request)
     {
-        Estado::create($request->validated());
-      
-        return redirect()->route('states.index')->with('message', "Estado criado com sucesso!");
+        Cidade::create($request->validated());
+
+        return redirect()->route('cities.index')->with('message', "Cidade criada com sucesso!");
     }
 
     /**
@@ -67,10 +66,10 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Estado $state)
-    {   
-        $countries = Pais::all();
-        return view('states.edit', compact('state', 'countries'));
+    public function edit(Cidade $city)
+    {
+        $states = Estado::all();
+        return view('cities.edit', compact('city', 'states'));
     }
 
     /**
@@ -80,14 +79,14 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StateStoreRequest $request, Estado $state)
+    public function update(CityStoreRequest $request, Cidade $city)
     {
-        $state->update([
-            'pais_id' => $request->pais_id,
+        $city->update([
+            'estado_id' => $request->estado_id,
             'name' =>  $request->name
         ]);
 
-        return redirect()->route('states.index')->with('message', "Estado atualizado com sucesso!");
+        return redirect()->route('cities.index')->with('message', "Cidade atualizada com sucesso!");
     }
 
     /**
@@ -96,10 +95,10 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Estado $state)
+    public function destroy(Cidade $city)
     {
-        $state->delete();
+        $city->delete();
 
-        return redirect()->route('states.index')->with('message', "Estado excluido com sucesso!");
+        return redirect()->route('cities.index')->with('message', "Cidade excluida com sucesso!");
     }
 }
