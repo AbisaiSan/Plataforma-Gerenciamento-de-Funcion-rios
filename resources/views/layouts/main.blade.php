@@ -42,7 +42,7 @@
             <hr class="sidebar-divider">
              <!-- Nav Item - Dashboard -->
              <li class="nav-item   ">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/employess">
                  
                     <span>Gerenciamento de Funcionários</span></a>
             </li>
@@ -61,7 +61,7 @@
                         <a class="collapse-item" href="{{ route('countries.index') }}">País</a>
                         <a class="collapse-item" href="{{ route('states.index') }}">Estado</a>
                         <a class="collapse-item" href="{{ route('cities.index') }}">Cidade</a>
-                        <a class="collapse-item" href="cards.html">Departamento</a>
+                        <a class="collapse-item" href="{{ route('departments.index') }}">Departamento</a>
                     </div>
                 </div>
             </li>
